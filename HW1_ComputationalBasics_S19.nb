@@ -1,0 +1,756 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     33053,        748]
+NotebookOptionsPosition[     31292,        711]
+NotebookOutlinePosition[     31666,        727]
+CellTagsIndexPosition[     31623,        724]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "CPI 200 Mathematical Foundations of Informatics\nInstructor: Dianne \
+Hansford\n",
+ StyleBox["Homework #1: Computational Basics",
+  FontWeight->"Bold"],
+ "\n Part 1. Truncation error\n Part 2. Non-terminating binary expression\n \
+Part 3. Algorithm complexity\n Part 4. Playing with functions"
+}], "Section",
+ CellChangeTimes->{{3.663529628430106*^9, 3.6635296566057177`*^9}, {
+  3.6635296881895237`*^9, 3.6635297465918646`*^9}, {3.6635306019147863`*^9, 
+  3.6635306296933746`*^9}, {3.693768483883317*^9, 3.6937684913833275`*^9}, {
+  3.693768738728711*^9, 3.693768759591241*^9}, {3.6937688783690248`*^9, 
+  3.693768885701535*^9}, {3.693769186628276*^9, 3.693769226133333*^9}, {
+  3.693769337615385*^9, 3.693769354628022*^9}, {3.756736435127845*^9, 
+  3.756736436816279*^9}, {3.756818932654914*^9, 3.7568189342941694`*^9}, {
+  3.75683276390786*^9, 3.7568327830484247`*^9}, {3.7569042484428945`*^9, 
+  3.756904253583045*^9}},ExpressionUUID->"670e8189-8c51-404d-820d-\
+883a550bf728"],
+
+Cell[TextData[{
+ StyleBox["Learning objectives:",
+  FontWeight->"Bold"],
+ "\n*) Experience with MM, programming, and learning a new tool.\n*) Learn \
+terminology of plotting\n*) Reinforce knowledge of lecture materials on \
+Computational Basics.\n*) Practice technical writing."
+}], "Text",
+ CellChangeTimes->{{3.7567364883815975`*^9, 3.7567365017571597`*^9}, {
+  3.75673654609201*^9, 3.7567366891296225`*^9}, {3.7568392831324863`*^9, 
+  3.7568393172132435`*^9}},ExpressionUUID->"cd9cb22e-920d-4bd2-a346-\
+559345e8782d"],
+
+Cell[TextData[{
+ StyleBox["Submission Guidelines:",
+  FontWeight->"Bold"],
+ "\nDue 31 Jan 2019 by 11:58pm\nName your file lastnameFirstInitial_HW1.nb\n\
+Delete all output before posting. See Cell->Delete All Output.\nTurn in via \
+Canvas. \n"
+}], "Subsubsection",
+ CellChangeTimes->{{3.663529628430106*^9, 3.6635296566057177`*^9}, {
+   3.6635296881895237`*^9, 3.6635297465918646`*^9}, {3.6635306967522106`*^9, 
+   3.663530707218809*^9}, {3.663530753724469*^9, 3.663530800041118*^9}, {
+   3.663530856703359*^9, 3.6635308683380246`*^9}, {3.6937687632287455`*^9, 
+   3.693768769478755*^9}, {3.6937708890825825`*^9, 3.6937709009851*^9}, {
+   3.694092498381071*^9, 3.694092539824744*^9}, {3.725231027451723*^9, 
+   3.725231034433936*^9}, {3.7567362791887784`*^9, 3.756736340235918*^9}, 
+   3.7567363912525573`*^9, {3.756819054908391*^9, 
+   3.7568190554422817`*^9}},ExpressionUUID->"f174984b-4934-4e59-98f7-\
+7c39a50ab6f9"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Instructions:\n",
+  FontWeight->"Bold"],
+ "-- Review the class nbs to prepare for completing this HW.\n\tYou can \
+cut-n-paste from the nbs to get started here.",
+ StyleBox["\n",
+  FontWeight->"Bold"],
+ "-- Below each problem description, add your MM code and/or text.\n-- \
+Comment your notebook\n-- Work independently but you may discuss the problems \
+with classmates.",
+ StyleBox["\n\n\nPART 1. Truncation error",
+  FontWeight->"Bold"],
+ StyleBox["\nUsing the Manipulate environment, plot the Taylor approximation \
+of cosine(2x) together with the \[OpenCurlyDoubleQuote]exact\
+\[CloseCurlyDoubleQuote] MM Cos(2x) function. (Do not use the MM Taylor \
+series function.) \n-- Create a function \[OpenCurlyDoubleQuote]taylorcos[x_, \
+imax_]\[CloseCurlyDoubleQuote] silmilarly as done in the class nb for the sin \
+function.\n-- Allow the user to change the summation variable between 0 and \
+20. \n-- Initialize the summation variable to start with ",
+  FontFamily->"Gill Sans MT"],
+ StyleBox["the first term",
+  FontFamily->"Gill Sans MT",
+  FontSlant->"Italic"],
+ StyleBox[" in the Taylor approximation.\n-- The summation variable should \
+increment by 1.\n-- Allow the user to change the domain between [-2Pi, 2Pi] \
+and [-6Pi, 6Pi] (incrementing by Pi).\n-- Add PlotRange->{-3,3}.\n-- For both \
+sliders, add meaningful text (string) as the label instead of the variable \
+name.\n\tsummation variable slider: add \[OpenCurlyDoubleQuote]Number of \
+terms\[CloseCurlyDoubleQuote]\n\tdomain slider: add \
+\[OpenCurlyDoubleQuote]Scale domain\[CloseCurlyDoubleQuote]\n-- Add the plot \
+label  \[OpenCurlyDoubleQuote]Taylor Series Approximation to Cos[2x]\
+\[CloseCurlyDoubleQuote]\n ",
+  FontFamily->"Gill Sans MT"]
+}], "Subsection",
+ CellChangeTimes->CompressedData["
+1:eJwd0l1Ik3EUBvB3CxmCQtloQZY4hAiaQqXgjOLVPvzAtQzqotpFmcvGHLiw
+lMwwp2Zi821tFFvi0mxoBLFGZinL2sx1YbFZzRiTWI1Npm0Uy1L7P/+Lw+/i
+8Byei5N9RlN1js8wTC4ZKPy2oOyriLLtrrRaeG02UQcn/CvU1k5+AwzfPkoN
+PjtmhAeHq0zQdONXfT/xekSshYOFrivQPrZPBzPYwE0Y6bzEweODb42wbbzJ
+BJkfM2Zo2ay0wmkD9xA+n6m3wa8l992wS31yCp4+VPgFuho4qvTTMmsl+n0S
+GVQ3liUrdaSv08vIiIqf0QL4729cCpNbTpVC/8Q0Ndl3RAP55nGq25A6R/cq
+NfX3q9p3FzpIPr+ZaraXx2A8q5naI3Ktwpw7HwUqYpthPg32C3jpcLdmskPu
+jLJvYpZuKAm1LipXomyxVJ+AT3nfM88TWe+fbOgZuSyBjoFAHuwKu+ehXrot
+DLmNO2IwIFy3CPlZIrmeuOvEZA2sG2F0UKx63A5TykZ7Yaj0NVU/N2uEy6KY
+BVZn3PJBxbCe2hLbG4AqnTECB+6WJ+DnIRt1vV3B9KLf/tEUmPfBlwq97wvS
+IaPQFt3Dnco4tSS48zBsqpZR13ibKuDZ4Bj1gEeQ+YIof5nYCp88EOfABadj
+O1ybWpJAh8eWCy82Fu+Bj7TifGjlekKwplsdgUVDzqtLq+T/hBta4H/wUaNU
+
+  "],ExpressionUUID->"98466f9f-b7ac-4cd7-8ed5-8b3f83774f91"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"taylorcos", "[", 
+    RowBox[{"x_", ",", " ", "imax_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Return", "[", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}], "^", 
+          RowBox[{"(", 
+           RowBox[{"i", "-", "1"}], ")"}]}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"2", "i"}], "-", "1"}], ")"}], "!"}]}], ")"}], 
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "i"}], "-", "1"}], ")"}]}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "imax"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"taylorcos", "[", 
+        RowBox[{"x", ",", "imax"}], "]"}], ",", " ", 
+       RowBox[{"Cos", "[", "x", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"-", "domain"}], ",", " ", "domain"}], "}"}], ",", " ", 
+     RowBox[{"PlotRange", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "3"}], ",", " ", "3"}], "}"}]}], ",", " ", 
+     RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", " ", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", " ", 
+      "\"\<Taylor Series Approximation to Cos[2x]\>\""}]}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"imax", ",", " ", "0", ",", " ", "\"\<Number of terms\>\""}], 
+      "}"}], ",", " ", "0", ",", "20", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"domain", ",", " ", 
+       RowBox[{"2", "Pi"}], ",", " ", "\"\<Scale domain\>\""}], "}"}], ",", 
+     " ", 
+     RowBox[{"2", "Pi"}], ",", " ", 
+     RowBox[{"6", "Pi"}], ",", " ", "Pi"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7575403488943615`*^9, 3.7575403643258567`*^9}, {
+   3.7575404338998137`*^9, 3.757540464777285*^9}, {3.7575405021523085`*^9, 
+   3.757540554254788*^9}, {3.7575405895075245`*^9, 3.7575406139282227`*^9}, 
+   3.757540674953044*^9, {3.75754077700838*^9, 3.757540808252833*^9}, {
+   3.7575410396098022`*^9, 3.7575410410713577`*^9}, {3.7579521057248845`*^9, 
+   3.757952145107566*^9}, {3.7579522626690454`*^9, 3.757952294239629*^9}, {
+   3.7579575655124955`*^9, 3.7579575846094418`*^9}, {3.757957618530668*^9, 
+   3.757957642652175*^9}, {3.7579576879509635`*^9, 3.7579577333685026`*^9}},
+ CellLabel->
+  "In[207]:=",ExpressionUUID->"1f1102ee-74fd-4835-a947-6c8feffc1a6f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "\n",
+ StyleBox["PART 2. Non-terminating binary expression  ",
+  FontWeight->"Bold"],
+ StyleBox["\n 1/10 has a non-terminating binary expression.\n Examine the \
+error in the representation of 1/10 with a fixed number of binary digits.\n \
+The array \[OpenCurlyDoubleQuote]binstore\[CloseCurlyDoubleQuote] stores 43 \
+binary digits for representing 1/10.\n \n -- Print the contents of binstore \
+using a Print statement with text describing what is being printed.\n -- \
+Create a routine  called \[OpenCurlyDoubleQuote]calc[binstore_, numdigits_]. \
+This function\n \t*) calculates the estimate to 1/10 based on input number of \
+digits \[OpenCurlyDoubleQuote]numdigits\[CloseCurlyDoubleQuote]. \n \t*) \
+returns a floating point number (It should not print the value.)\n \t\n -- \
+Use Manipulate to print estimate values for 1/10 .\n \t*) Set numdigits  to \
+take values 1 to 43. \n \t*) Print using ScientificForm with 10 digits of \
+precision. (You do not need \[OpenCurlyDoubleQuote]Print\
+\[CloseCurlyDoubleQuote].)\n \t*) The number displayed should be a floating \
+point number.\n \t*) Create a slider label  \[OpenCurlyDoubleQuote]Number of \
+binary terms\[CloseCurlyDoubleQuote] rather than the actual variable.\n \t*) \
+Add a suitable FrameLabel that describes what is being demonstrated.\n \t\n \
+-- In a formatted text cell below the Manipulate output, state how many \
+binary digits are needed to represent 1/10 in 10 digit precision \
+ScientificForm output. This should be a complete sentence.\n ",
+  FontFamily->"Gill Sans MT"]
+}], "Subsection",
+ CellChangeTimes->{{3.6635267194027195`*^9, 3.663526728399234*^9}, {
+   3.663526775619934*^9, 3.6635267759329524`*^9}, {3.6635268320791636`*^9, 
+   3.663526834549305*^9}, {3.6635270906159515`*^9, 3.663527098583407*^9}, {
+   3.6635309036730456`*^9, 3.663530905091127*^9}, {3.6635309821945367`*^9, 
+   3.663531049960413*^9}, {3.663531102945443*^9, 3.663531155735463*^9}, {
+   3.6635311901764326`*^9, 3.6635311958357563`*^9}, {3.6635312385281982`*^9, 
+   3.6635312832217546`*^9}, {3.6635313165806627`*^9, 
+   3.6635313395879784`*^9}, {3.6635315809457836`*^9, 
+   3.6635315868571215`*^9}, {3.6635317217898393`*^9, 
+   3.6635317245769987`*^9}, {3.663532559838773*^9, 3.663532657432355*^9}, {
+   3.6635328235048532`*^9, 3.6635328273970766`*^9}, {3.6635329634348574`*^9, 
+   3.663532988144271*^9}, {3.6635330187940235`*^9, 3.663533033747879*^9}, {
+   3.6635330694969234`*^9, 3.663533097340516*^9}, {3.663533131006442*^9, 
+   3.663533382792843*^9}, {3.66353420621494*^9, 3.6635342480703344`*^9}, 
+   3.6821948858671103`*^9, {3.6821957223224573`*^9, 3.682195728840058*^9}, {
+   3.682198200254572*^9, 3.6821982363756375`*^9}, {3.682198271995675*^9, 
+   3.6821982975471363`*^9}, {3.682198451618293*^9, 3.6821984942197294`*^9}, {
+   3.682198574813339*^9, 3.682198810804837*^9}, {3.682198937677094*^9, 
+   3.6821989396072044`*^9}, {3.682199130222107*^9, 3.6821991610728717`*^9}, {
+   3.6822015052216573`*^9, 3.682201523410698*^9}, {3.6937688257938366`*^9, 
+   3.693768825933837*^9}, {3.69376893585161*^9, 3.693768994891695*^9}, {
+   3.725231276637928*^9, 3.725231306075382*^9}, 3.7567386272530117`*^9, {
+   3.756738778094338*^9, 3.7567387807693605`*^9}, {3.7568206356163616`*^9, 
+   3.7568206510114346`*^9}, {3.7568206828886476`*^9, 3.756820732811987*^9}, {
+   3.7568211715484247`*^9, 3.756821324060911*^9}, {3.756821365000724*^9, 
+   3.756821410749609*^9}, {3.7568214498144846`*^9, 3.7568214747209187`*^9}, {
+   3.7568215168000093`*^9, 3.756821517769081*^9}, {3.7568217288371835`*^9, 
+   3.756821815483947*^9}, {3.7568219692419357`*^9, 3.756821970232901*^9}, {
+   3.7568222998327045`*^9, 3.756822318928178*^9}, {3.756822701502985*^9, 
+   3.7568227140614924`*^9}, {3.756822777550603*^9, 3.7568228748913584`*^9}, {
+   3.7568229919554567`*^9, 3.7568230248150167`*^9}, {3.7568395523711433`*^9, 
+   3.7568396612766438`*^9}, {3.7568397116265497`*^9, 
+   3.756839713674018*^9}},ExpressionUUID->"6bb1e0ad-5143-4aa9-939b-\
+641387391d9e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"binstore", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "43"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"binstore", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", "*", "4"}], "]"}], "]"}], " ", "=", " ", "1"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"binstore", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"i", "*", "4"}], "+", "1"}], "]"}], "]"}], " ", "=", " ", 
+       "1"}]}], ")"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"binstore", ",", " ", "\"\< is the value of binstore\>\""}], "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"binary", " ", "=", " ", "\"\<0.\>\""}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"(", " ", 
+    RowBox[{
+     RowBox[{"binary", " ", "=", " ", 
+      RowBox[{"binary", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"binstore", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}]}]}], " ", ";"}], ")"}], ",", 
+   " ", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", " ", "1", ",", " ", "43"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "binary", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"calc", "[", 
+   RowBox[{"binstore_", ",", " ", "numdigits_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"number", " ", "=", " ", 
+     RowBox[{"0", "//", "N"}]}], ";", " ", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"number", " ", "+=", " ", 
+        RowBox[{
+         RowBox[{"binstore", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "*", 
+         RowBox[{"2", "^", 
+          RowBox[{"(", 
+           RowBox[{"-", 
+            RowBox[{"(", "i", ")"}]}], ")"}]}]}]}], ")"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "1", ",", " ", "numdigits"}], "}"}]}], "]"}], 
+    ";", " ", 
+    RowBox[{"Return", "[", "number", "]"}], ";"}], 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"ScientificForm", "[", 
+     RowBox[{
+      RowBox[{"calc", "[", 
+       RowBox[{"binstore", ",", " ", "n"}], "]"}], ",", " ", "10"}], "]"}], 
+    ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", " ", "1", ",", "\"\<Number of Binary terms\>\""}], 
+       "}"}], ",", " ", "1", ",", " ", "43", ",", " ", "1"}], "}"}], ",", " ", 
+    RowBox[{
+    "FrameLabel", "\[Rule]", " ", 
+     "\"\<binary to decimal to 10 points of precision\>\""}]}], " ", "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{" "}]}], "Input",
+ CellChangeTimes->{{3.6821957351201544`*^9, 3.682195846706868*^9}, {
+   3.6821959031927357`*^9, 3.6821962768884754`*^9}, {3.6821963169190903`*^9, 
+   3.682196321616663*^9}, {3.6821964229157186`*^9, 3.682196543840076*^9}, {
+   3.682196610261096*^9, 3.68219665476178*^9}, {3.682196726780386*^9, 
+   3.6821967424506264`*^9}, {3.682196976176717*^9, 3.682196981016791*^9}, {
+   3.6821982479673004`*^9, 3.682198266384354*^9}, 3.6821985463677125`*^9, {
+   3.6821989726500945`*^9, 3.6821989730791187`*^9}, {3.693769056349283*^9, 
+   3.693769070601804*^9}, {3.7254567936049414`*^9, 3.725456823169196*^9}, {
+   3.7568207403569736`*^9, 3.756820750233488*^9}, {3.756820791428134*^9, 
+   3.7568209600359745`*^9}, {3.7568210430223885`*^9, 
+   3.7568210433505173`*^9}, {3.756821342093528*^9, 3.7568213450312853`*^9}, {
+   3.7568215267386227`*^9, 3.756821565098638*^9}, 3.7568216976147194`*^9, {
+   3.7568218853722425`*^9, 3.756821905470736*^9}, {3.7568219366295366`*^9, 
+   3.756821948373288*^9}, {3.7568398130859604`*^9, 3.7568398146112456`*^9}, 
+   3.7569063722957797`*^9, {3.757541158399332*^9, 3.7575412048659678`*^9}, {
+   3.757541270480484*^9, 3.757541310992181*^9}, {3.7579529811650453`*^9, 
+   3.7579531522712917`*^9}, {3.757953257943609*^9, 3.757953340989456*^9}, {
+   3.757953376404741*^9, 3.7579535499584475`*^9}, {3.757953584669592*^9, 
+   3.7579536721097155`*^9}, {3.7579537166116686`*^9, 3.757953753064126*^9}, {
+   3.7579537873184915`*^9, 3.7579539607805014`*^9}, {3.7579541980677075`*^9, 
+   3.757954210824581*^9}, {3.7579553360873785`*^9, 3.757955340958347*^9}, {
+   3.7579553931048517`*^9, 3.757955460289129*^9}, {3.757955589663043*^9, 
+   3.7579556958539753`*^9}, {3.7579557367934933`*^9, 
+   3.7579557692775993`*^9}, {3.7579560599639535`*^9, 3.757956060053751*^9}, {
+   3.7579561505716066`*^9, 3.757956162879647*^9}, {3.7579562792364254`*^9, 
+   3.757956459063367*^9}, 3.757956531920434*^9, 3.7579565893837147`*^9},
+ CellLabel->
+  "In[187]:=",ExpressionUUID->"13b1aa42-fa44-4634-8f02-360155bf937e"],
+
+Cell["\<\
+According to the slider, I should need at least 37 digits to reach .1 in 10 \
+levels of precision.\
+\>", "Text",
+ CellChangeTimes->{
+  3.7579561870011187`*^9, {3.7579562216265254`*^9, 
+   3.757956249708372*^9}},ExpressionUUID->"b941b999-3e16-47e3-881a-\
+f886c74ddf26"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["PART 3. Algorithm complexity\n",
+  FontWeight->"Bold"],
+ "The Gauss elimination algorithm is known to have worst case time complexity \
+O(n^3). This complexity is derived from examining the number of division, \
+multiplication, and subtraction operations.\ndivisions: n(n+1)/2\n\
+multiplications: (2n^3 + 3n^2 - 5n)/6\nsubtractions: (2n^3 + 3n^2 - 5n)/6\n\
+total = (2n^3)/3\n-- Create two plots of the polynomials above, including \
+n^3. The first plot should be a standard plot and the second a LogPlot. In \
+each plot, add a legend that pairs the color with the operation (division, \
+multiplication, etc.)\n-- Below the plots, in formatted text, make some \
+comments on the difference between the two plots.",
+ StyleBox["\n ",
+  FontFamily->"Gill Sans MT"]
+}], "Subsection",
+ CellChangeTimes->{{3.6635267194027195`*^9, 3.663526728399234*^9}, {
+   3.663526775619934*^9, 3.6635267759329524`*^9}, {3.6635268320791636`*^9, 
+   3.663526834549305*^9}, {3.6635270906159515`*^9, 3.663527098583407*^9}, {
+   3.6635309036730456`*^9, 3.663530905091127*^9}, {3.6635309821945367`*^9, 
+   3.663531049960413*^9}, {3.663531102945443*^9, 3.663531155735463*^9}, {
+   3.6635311901764326`*^9, 3.6635311958357563`*^9}, {3.6635312385281982`*^9, 
+   3.6635312832217546`*^9}, {3.6635313165806627`*^9, 
+   3.6635313395879784`*^9}, {3.6635315809457836`*^9, 
+   3.6635315868571215`*^9}, {3.6635317217898393`*^9, 
+   3.6635317245769987`*^9}, {3.663532559838773*^9, 3.663532657432355*^9}, {
+   3.6937686422960725`*^9, 3.69376871064867*^9}, {3.693769143373214*^9, 
+   3.6937691557782316`*^9}, {3.693769412455605*^9, 3.6937694916068335`*^9}, {
+   3.69376960894656*^9, 3.693769614864068*^9}, {3.725231371173504*^9, 
+   3.725231407532771*^9}, {3.7252315312539997`*^9, 3.7252315441752234`*^9}, {
+   3.725231792908884*^9, 3.725231800659498*^9}, {3.72523189375247*^9, 
+   3.72523189893968*^9}, 3.7567387136533155`*^9, {3.7568245979004335`*^9, 
+   3.7568247699973326`*^9}, {3.7568248018287973`*^9, 3.756824924466357*^9}, {
+   3.7568310504349947`*^9, 3.7568312772796254`*^9}, {3.756839839332264*^9, 
+   3.7568398409802923`*^9}},ExpressionUUID->"965208de-6fca-4ad4-bd29-\
+2ee392269011"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"n", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "+", "1"}], ")"}], "/", "2"}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", 
+           RowBox[{"n", "^", "3"}]}], "+", 
+          RowBox[{"3", 
+           RowBox[{"n", "^", "2"}]}], "-", 
+          RowBox[{"5", "n"}]}], ")"}], "/", "6"}], ",", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", 
+           RowBox[{"n", "^", "3"}]}], "+", 
+          RowBox[{"3", 
+           RowBox[{"n", "^", "2"}]}], "-", 
+          RowBox[{"5", "n"}]}], ")"}], "/", "6"}], ",", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", 
+          RowBox[{"n", "^", "3"}]}], ")"}], "/", "3"}], ",", " ", 
+       RowBox[{"n", "^", "3"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "25"}], "}"}], ",", "  ", 
+     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"AxesStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ",", " ", 
+          "20"}], "]"}]}], ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Directive", "[", 
+           RowBox[{"Red", ",", "Thick"}], "]"}], ",", " ", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Green", ",", "Thick"}], "]"}], ",", " ", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Blue", ",", "Thick"}], "]"}], ",", " ", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Yellow", ",", "Thick"}], "]"}], ","}], " "}]}]}], "*)"}], 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<divisions\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<multiplications\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<subtractions\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Total\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<n^3\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}]}],
+          "}"}], ",", " ", "\[IndentingNewLine]", "Bottom"}], "]"}]}]}], "  ",
+     "]"}], " ", "\[IndentingNewLine]", 
+   RowBox[{"LogPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"n", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "+", "1"}], ")"}], "/", "2"}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", 
+           RowBox[{"n", "^", "3"}]}], "+", 
+          RowBox[{"3", 
+           RowBox[{"n", "^", "2"}]}], "-", 
+          RowBox[{"5", "n"}]}], ")"}], "/", "6"}], ",", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", 
+           RowBox[{"n", "^", "3"}]}], "+", 
+          RowBox[{"3", 
+           RowBox[{"n", "^", "2"}]}], "-", 
+          RowBox[{"5", "n"}]}], ")"}], "/", "6"}], ",", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", 
+          RowBox[{"n", "^", "3"}]}], ")"}], "/", "3"}], ",", " ", 
+       RowBox[{"n", "^", "3"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "25"}], "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", " ", "800"}], ",", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"Placed", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<divisions\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<multiplications\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<subtractions\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Total\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}], 
+          ",", " ", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<n^3\>\"", ",", " ", "20", ",", "  ", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}]}], "]"}]}],
+          "}"}], ",", " ", "\[IndentingNewLine]", "Bottom"}], "]"}]}]}], "  ",
+     "]"}], " "}]}]], "Input",
+ CellChangeTimes->{{3.7579013832339134`*^9, 3.757901475453074*^9}, {
+  3.757901530758095*^9, 3.7579015446529565`*^9}, {3.7579015751394033`*^9, 
+  3.757901752695396*^9}, {3.7579543605191355`*^9, 3.757954386001998*^9}, {
+  3.7579569066001368`*^9, 3.757957003569766*^9}, {3.7579571155681314`*^9, 
+  3.757957120119955*^9}, {3.7579571831064606`*^9, 3.7579572802196765`*^9}, {
+  3.757957350348077*^9, 3.7579574103885*^9}, {3.757957441439433*^9, 
+  3.757957447325655*^9}},
+ CellLabel->
+  "In[199]:=",ExpressionUUID->"b3efa445-5c01-4db7-a3ef-ba36150f06eb"],
+
+Cell["\<\
+Well the first one goes up to infinity while the 2nd one seems to plateau at \
+a certain point depending on the equation.\
+\>", "Text",
+ CellChangeTimes->{{3.757957488614204*^9, 
+  3.757957521669776*^9}},ExpressionUUID->"bf0565fa-e975-44cb-b474-\
+6852c66f4d3e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["PART 4.  \n",
+  FontWeight->"Bold"],
+ "In the Manipulate environment, plot the two functions f(x) = sin(1.0/x) and \
+g(x) = x*sin(1.0/x).\n-- Add a legend (with Expressions)\n-- Manipulate the \
+domain from from [-0.1, 0.1]  to [-2Pi, 2Pi] in increments of 0.1. \n-- \
+Initialize the domain to be  [-2Pi, 2Pi]\n\nThe two functions behave very \
+differently at x=0. Explain the behavior of each function in a formatted text \
+cell just below the plot. (No need to get out your calculus book.)",
+ StyleBox["\n \n",
+  FontFamily->"Gill Sans MT"]
+}], "Subsection",
+ CellChangeTimes->{{3.6635267194027195`*^9, 3.663526728399234*^9}, {
+   3.663526775619934*^9, 3.6635267759329524`*^9}, {3.6635268320791636`*^9, 
+   3.663526834549305*^9}, {3.6635270906159515`*^9, 3.663527098583407*^9}, {
+   3.6635309036730456`*^9, 3.663530905091127*^9}, {3.6635309821945367`*^9, 
+   3.663531049960413*^9}, {3.663531102945443*^9, 3.663531155735463*^9}, {
+   3.6635311901764326`*^9, 3.6635311958357563`*^9}, {3.6635312385281982`*^9, 
+   3.6635312832217546`*^9}, {3.6635313165806627`*^9, 
+   3.6635313395879784`*^9}, {3.6635315809457836`*^9, 
+   3.6635315868571215`*^9}, {3.6635317217898393`*^9, 
+   3.6635317245769987`*^9}, {3.663532559838773*^9, 3.663532657432355*^9}, {
+   3.6937686422960725`*^9, 3.69376871064867*^9}, {3.693769143373214*^9, 
+   3.6937691557782316`*^9}, {3.693769412455605*^9, 3.6937694916068335`*^9}, {
+   3.693769575673232*^9, 3.693769580545739*^9}, {3.693769633016594*^9, 
+   3.693769704786697*^9}, {3.693769789054516*^9, 3.6937698582846146`*^9}, {
+   3.693769963189765*^9, 3.69376999431233*^9}, {3.7252319953468575`*^9, 
+   3.7252320211621056`*^9}, {3.7567387355348454`*^9, 3.75673876672371*^9}, {
+   3.756738923898881*^9, 3.7567389272846518`*^9}, {3.7567389774097133`*^9, 
+   3.756739136659572*^9}, 3.7568314164687943`*^9, {3.7568314772497396`*^9, 
+   3.756831515075932*^9}, {3.7568316594223337`*^9, 3.7568317214547777`*^9}, {
+   3.7568317790338726`*^9, 3.756831849269701*^9}, {3.756832152101617*^9, 
+   3.756832196696333*^9}, {3.7568401639199877`*^9, 3.756840182607951*^9}, {
+   3.756841710020219*^9, 3.756841738980051*^9}, 
+   3.757542291778664*^9},ExpressionUUID->"672deabe-d106-4c6c-b0f9-\
+3ae37dec8c40"],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], " ", ":=", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"(", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"1", "/", "x"}], "]"}], ")"}], "]"}]}], ";"}],
+  FontFamily->"Courier New"], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", 
+    StyleBox["[",
+     FontFamily->"Courier New"], 
+    StyleBox["y_",
+     FontFamily->"Courier New"], 
+    StyleBox["]",
+     FontFamily->"Courier New"]}], 
+   StyleBox[" ",
+    FontFamily->"Courier New"], 
+   StyleBox[":=",
+    FontFamily->"Courier New"], 
+   StyleBox[" ",
+    FontFamily->"Courier New"], 
+   RowBox[{
+    StyleBox["N",
+     FontFamily->"Courier New"], 
+    StyleBox["[",
+     FontFamily->"Courier New"], 
+    RowBox[{
+     StyleBox["(",
+      FontFamily->"Courier New"], 
+     RowBox[{
+      StyleBox["y",
+       FontFamily->"Courier New"], 
+      StyleBox["*",
+       FontFamily->"Courier New"], 
+      RowBox[{"Sin", "[", 
+       RowBox[{"1", "/", "y"}], "]"}]}], ")"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"1", "/", "x"}], "]"}], ",", " ", 
+        RowBox[{"x", "*", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"1", "/", "x"}], "]"}]}]}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", 
+        RowBox[{"-", "range"}], ",", "range"}], "}"}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+      RowBox[{"PlotLegends", "\[Rule]", " ", "\"\<Expressions\>\""}]}], "]"}],
+     ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"range", ",", 
+        RowBox[{"2", "Pi"}]}], "}"}], ",", " ", "0.1", ",", 
+      RowBox[{"2", "Pi"}], ",", " ", "0.1"}], "}"}]}], "]"}],
+  FontFamily->"Courier New"], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7575422964858513`*^9, 3.7575422976566887`*^9}, {
+   3.757543119115854*^9, 3.757543144672516*^9}, {3.75754318678395*^9, 
+   3.757543206417412*^9}, {3.757901910247162*^9, 3.757901910649087*^9}, 
+   3.757901954105976*^9, {3.757954432390873*^9, 3.7579544400593925`*^9}, {
+   3.757957788552845*^9, 3.757957791346373*^9}, 3.757957897744749*^9, {
+   3.7579579287877064`*^9, 3.7579580700788393`*^9}, {3.757958136074299*^9, 
+   3.757958172330311*^9}, {3.757958203668479*^9, 3.757958209182727*^9}, {
+   3.7579582512841034`*^9, 3.757958267997425*^9}, {3.7579583223559804`*^9, 
+   3.757958331475583*^9}, {3.7579583628436728`*^9, 3.757958502453068*^9}, 
+   3.757958542879922*^9},
+ CellLabel->
+  "In[241]:=",ExpressionUUID->"0d8e732e-2bc1-4266-9c4a-eea4b49f6395"],
+
+Cell["\<\
+The sin( 1/x) function seems to scrunch up way sooner than the xsin(1/x) \
+funtion\
+\>", "Text",
+ CellChangeTimes->{{3.7579585811695313`*^9, 
+  3.7579586084774427`*^9}},ExpressionUUID->"94f3ba99-9d6f-4ca9-97ab-\
+1bffcd37d4e6"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1406, 898},
+WindowMargins->{{-1, Automatic}, {-10, Automatic}},
+Magnification:>1.3 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 998, 17, 370, "Section",ExpressionUUID->"670e8189-8c51-404d-820d-883a550bf728"],
+Cell[1581, 41, 520, 10, 160, "Text",ExpressionUUID->"cd9cb22e-920d-4bd2-a346-559345e8782d"],
+Cell[2104, 53, 918, 16, 225, "Subsubsection",ExpressionUUID->"f174984b-4934-4e59-98f7-7c39a50ab6f9"],
+Cell[CellGroupData[{
+Cell[3047, 73, 2592, 48, 794, "Subsection",ExpressionUUID->"98466f9f-b7ac-4cd7-8ed5-8b3f83774f91"],
+Cell[5642, 123, 2648, 69, 113, "Input",ExpressionUUID->"1f1102ee-74fd-4835-a947-6c8feffc1a6f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8327, 197, 3994, 58, 793, "Subsection",ExpressionUUID->"6bb1e0ad-5143-4aa9-939b-641387391d9e"],
+Cell[12324, 257, 5074, 119, 488, "Input",ExpressionUUID->"13b1aa42-fa44-4634-8f02-360155bf937e"],
+Cell[17401, 378, 278, 7, 44, "Text",ExpressionUUID->"b941b999-3e16-47e3-881a-f886c74ddf26"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17716, 390, 2177, 34, 415, "Subsection",ExpressionUUID->"965208de-6fca-4ad4-bd29-2ee392269011"],
+Cell[19896, 426, 5883, 146, 338, "Input",ExpressionUUID->"b3efa445-5c01-4db7-a3ef-ba36150f06eb"],
+Cell[25782, 574, 271, 6, 44, "Text",ExpressionUUID->"bf0565fa-e975-44cb-b474-6852c66f4d3e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26090, 585, 2235, 35, 382, "Subsection",ExpressionUUID->"672deabe-d106-4c6c-b0f9-3ae37dec8c40"],
+Cell[28328, 622, 2697, 77, 138, "Input",ExpressionUUID->"0d8e732e-2bc1-4266-9c4a-eea4b49f6395"],
+Cell[31028, 701, 236, 6, 44, "Text",ExpressionUUID->"94f3ba99-9d6f-4ca9-97ab-1bffcd37d4e6"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

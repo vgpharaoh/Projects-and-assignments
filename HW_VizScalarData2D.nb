@@ -1,0 +1,401 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14394,        393]
+NotebookOptionsPosition[     12284,        348]
+NotebookOutlinePosition[     12628,        363]
+CellTagsIndexPosition[     12585,        360]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+CPI 200   Instructor: Dianne Hansford
+HW: Visualizing Scalar Values over 2D Data
+Due: 24 April 2018 by midnight\
+\>", "Section",
+ CellChangeTimes->{{3.664733132620053*^9, 3.6647331853480687`*^9}, {
+  3.6681908015229836`*^9, 3.668190841546454*^9}, {3.6681909260114393`*^9, 
+  3.6681909324074507`*^9}, {3.700829542046614*^9, 3.700829542499015*^9}, {
+  3.7008295824391975`*^9, 3.700829582563998*^9}, {3.7323006890564613`*^9, 
+  3.732300691632275*^9}},ExpressionUUID->"89879534-9673-44c9-bfd7-\
+9be7085a265f"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Create a bivariate function called myfct[x_, y_].
+(It should be interesting -- not just a plane or one of my demo functions!)
+Define the domain of interest and call it xmin, xmax, ymin, ymax. 
+(You need to use variables for the domain and use this specification in each \
+plot.)
+(I will call this domain D below.)
+Below each task, create a cell with a plot.
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+  3.668191037566234*^9, 3.668191081631873*^9}, {3.6681911201326303`*^9, 
+  3.6681911847336445`*^9}, {3.6681916155280066`*^9, 3.668191626395626*^9}, {
+  3.66819172428891*^9, 3.6681917323229237`*^9}, {3.6683842185044727`*^9, 
+  3.6683842279840155`*^9}, {3.732300712390053*^9, 3.7323007457329435`*^9}, {
+  3.7323008165944996`*^9, 
+  3.7323008690270224`*^9}},ExpressionUUID->"0bd613d7-e6fc-47e5-beef-\
+0811613deee8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"myfct", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"2", 
+     RowBox[{"x", "^", "2"}]}], " ", "+", 
+    RowBox[{"2", 
+     RowBox[{"y", "^", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xmin", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xmax", " ", "=", " ", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ymin", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ymax", " ", "=", " ", "5"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.733599191826627*^9, 3.733599242659379*^9}, {
+  3.73360374247009*^9, 
+  3.7336037829107585`*^9}},ExpressionUUID->"b690f034-dd63-45bb-9715-\
+fcc57b61a799"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1. Plot myfct with Plot3D over D. Use the default setting for Plot3D.
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+   3.668191037566234*^9, 3.668191081631873*^9}, {3.6681912041812787`*^9, 
+   3.6681912271123457`*^9}, {3.668191503733277*^9, 3.6681915137534943`*^9}, 
+   3.668191737954534*^9, {3.732300793525629*^9, 3.73230079393123*^9}, 
+   3.7336038612764025`*^9},ExpressionUUID->"8f37035d-96bf-494b-bf83-\
+6226a447bc78"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot3D", "[", 
+    RowBox[{
+     RowBox[{"plane", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", " ", "xmax"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "ymax"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "10"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "10"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"plane", "[", 
+           RowBox[{"10", ",", "10"}], "]"}]}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"xmax", ",", "10"}], "}"}], ",", " ", "1", ",", "10"}], "}"}], 
+   ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ymax", ",", "10"}], "}"}], ",", " ", "1", ",", "10"}], "}"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{
+  3.733603883290574*^9},ExpressionUUID->"b78b5494-b482-43d2-82d4-\
+e138fdb66587"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2. Plot myfct with Plot3D over D without the mesh.
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+   3.668191037566234*^9, 3.668191081631873*^9}, {3.66819149978647*^9, 
+   3.6681915918109655`*^9}, {3.668191743664144*^9, 3.668191745224147*^9}, {
+   3.7323007961046343`*^9, 3.732300796432235*^9}, 
+   3.733604091433856*^9},ExpressionUUID->"e854f23b-d44b-4ced-a5bf-\
+58a723f2384e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Manipulate", "[", 
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{"surfPlot", " ", "=", " ", 
+      RowBox[{"Plot3D", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"myfct", "[", 
+          RowBox[{"x", ",", "y"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"y", ",", "ymin", ",", "ymax"}], "}"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Directive", "[", 
+             RowBox[{"Yellow", ",", 
+              RowBox[{"Specularity", "[", 
+               RowBox[{"White", ",", "200"}], "]"}], ",", 
+              RowBox[{"Opacity", "[", "0.5", "]"}]}], "]"}], ",", "  ", 
+            RowBox[{"Directive", "[", 
+             RowBox[{"Red", ",", 
+              RowBox[{"Specularity", "[", 
+               RowBox[{"White", ",", "20"}], "]"}], ",", 
+              RowBox[{"Opacity", "[", "0.3", "]"}]}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<f(x,y)\>\""}], 
+           "}"}]}], ",", " ", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}]}]}]}]}]}]}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.733604112809662*^9, {3.733604394755619*^9, 
+   3.73360439547054*^9}},ExpressionUUID->"c561a24b-6fb7-4053-b3af-\
+5adad616e06b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+3. Plot myfct over D with ContourPlot with the legend displayed
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+   3.668191037566234*^9, 3.668191081631873*^9}, {3.668191642156654*^9, 
+   3.6681916580293818`*^9}, {3.668191750725356*^9, 3.668191771665593*^9}, {
+   3.668193598333826*^9, 3.6681936065082407`*^9}, {3.7323007983394384`*^9, 
+   3.732300798698239*^9}, 
+   3.7336042867191133`*^9},ExpressionUUID->"0d63fd95-2078-454f-9251-\
+569361380e13"],
+
+Cell[BoxData[{
+ RowBox[{"Plot3D", "[", 
+  RowBox[{
+   RowBox[{"myfct", "[", 
+    RowBox[{"x", ",", " ", "y"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", "0", ",", " ", "xmax"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", " ", "0", ",", " ", "ymax"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ContourPlot", "[", 
+  RowBox[{
+   RowBox[{"myfct", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "xmax"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", "ymax"}], "}"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.733604315463743*^9, 
+  3.733604375443647*^9}},ExpressionUUID->"91a35a66-501b-45c4-a469-\
+223fc9409948"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+4. Create a ContourPlot of the equation myfct = z for some meaningful z value
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+  3.668191037566234*^9, 3.668191081631873*^9}, {3.66819207289231*^9, 
+  3.6681920914220424`*^9}, {3.732300800539042*^9, 
+  3.732300800944643*^9}},ExpressionUUID->"80a83439-75bb-4f25-bfea-\
+a928b1abfc2c"],
+
+Cell[BoxData[
+ RowBox[{"ContourPlot3D", "[", 
+  RowBox[{
+   RowBox[{"myfct", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", 
+     RowBox[{"-", "rr"}], ",", "rr"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", " ", 
+     RowBox[{"-", "rr"}], ",", "rr"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", " ", 
+     RowBox[{"-", "rr"}], ",", "rr"}], "}"}], ",", " ", 
+   RowBox[{"Contours", "\[Rule]", "6"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7336045559854736`*^9, 3.7336045757226*^9}, {
+  3.733604723509593*^9, 
+  3.7336047364750986`*^9}},ExpressionUUID->"7b5789ac-e00f-4440-9733-\
+faf0f171502c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+5. Create a DensityPlot of myfct with the legend
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+   3.668191037566234*^9, 3.668191081631873*^9}, {3.6681922688959093`*^9, 
+   3.668192298277189*^9}, {3.732300871135026*^9, 3.732300871494827*^9}, 
+   3.7336046762316*^9},ExpressionUUID->"9f49ae4b-e41f-4ea7-8aa6-09afd0f3e005"],
+
+Cell[BoxData[{
+ RowBox[{"Print", "[", "\"\<Density plot of the function \>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"density", "=", 
+  RowBox[{"DensityPlot", "[", 
+   RowBox[{
+    RowBox[{"myfct", "[", 
+     RowBox[{"x", ",", "y"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "5"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"y", ",", "0", ",", "5"}], "}"}], ",", " ", 
+    RowBox[{"PlotPoints", "\[Rule]", "Automatic"}], ",", 
+    RowBox[{"MaxRecursion", "\[Rule]", "Automatic"}], ",", 
+    RowBox[{"BaseStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\"\<FontFamily\>\"", "\[Rule]", "\"\<Helvetica\>\""}], ",", 
+       RowBox[{"\"\<FontSize\>\"", "\[Rule]", "11"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7336046861098557`*^9, 3.733604705600358*^9}, {
+  3.7336047482971516`*^9, 
+  3.7336047668444495`*^9}},ExpressionUUID->"3042fec2-f5c3-4300-9844-\
+34dd7845a5cc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+6. Create a scatter plot of myfct with ListPointPlot3D
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+  3.668191037566234*^9, 3.668191081631873*^9}, {3.668193903848624*^9, 
+  3.668193913400841*^9}, {3.732300875506034*^9, 
+  3.732300875928235*^9}},ExpressionUUID->"dc9e5eb6-c473-415b-9f0d-\
+6a65f86f8b3f"],
+
+Cell[BoxData[
+ RowBox[{"ListPointPlot3D", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"myfct", "[", 
+     RowBox[{"x", ",", " ", "y"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "5", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "0", ",", "5", ",", "0.1"}], "}"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.733605036280046*^9, 
+  3.7336050634498935`*^9}},ExpressionUUID->"9dc90418-06b0-42df-b9b8-\
+92ecc95fcdfd"]
+}, Open  ]],
+
+Cell["\<\
+EC 1. Extra credit: Plot myfct with Plot3D and add RegionFunction to cut a \
+hole in the center of the domain.
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+  3.668191037566234*^9, 3.668191081631873*^9}, {3.6681913162038803`*^9, 
+  3.668191387521133*^9}, {3.6681914200777903`*^9, 3.668191459039671*^9}, {
+  3.7323008800818424`*^9, 
+  3.732300882796247*^9}},ExpressionUUID->"f4a8871b-9e23-48f1-91bf-\
+84dc90bbd448"],
+
+Cell["\<\
+EC 2. Extra credit: Embed the ContourPlot of the equation myfct = z in \
+Manipulate and let the z-value vary from the minimum to the maximum value \
+over D.
+\
+\>", "Subsection",
+ CellChangeTimes->{{3.6681909502170815`*^9, 3.668190983008628*^9}, {
+  3.668191037566234*^9, 3.668191081631873*^9}, {3.668191950494563*^9, 
+  3.6681919677414703`*^9}, {3.66819203757432*^9, 3.668192051894673*^9}, {
+  3.668192103075263*^9, 3.6681921529811783`*^9}, {3.7323008847492504`*^9, 
+  3.7323008869040546`*^9}},ExpressionUUID->"cec7238e-9f96-4756-895e-\
+e8058714fa79"]
+}, Open  ]]
+},
+WindowSize->{1276, 750},
+WindowMargins->{{Automatic, -7}, {113, Automatic}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 515, 10, 143, "Section",ExpressionUUID->"89879534-9673-44c9-bfd7-9be7085a265f"],
+Cell[CellGroupData[{
+Cell[1120, 36, 870, 17, 209, "Subsection",ExpressionUUID->"0bd613d7-e6fc-47e5-beef-0811613deee8"],
+Cell[1993, 55, 760, 21, 105, "Input",ExpressionUUID->"b690f034-dd63-45bb-9715-fcc57b61a799"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2790, 81, 476, 9, 79, "Subsection",ExpressionUUID->"8f37035d-96bf-494b-bf83-6226a447bc78"],
+Cell[3269, 92, 1162, 35, 48, "Input",ExpressionUUID->"b78b5494-b482-43d2-82d4-e138fdb66587"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4468, 132, 431, 9, 79, "Subsection",ExpressionUUID->"e854f23b-d44b-4ced-a5bf-58a723f2384e"],
+Cell[4902, 143, 1595, 39, 86, "Input",ExpressionUUID->"c561a24b-6fb7-4053-b3af-5adad616e06b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6534, 187, 499, 10, 79, "Subsection",ExpressionUUID->"0d63fd95-2078-454f-9251-569361380e13"],
+Cell[7036, 199, 778, 21, 48, "Input",ExpressionUUID->"91a35a66-501b-45c4-a469-223fc9409948"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7851, 225, 381, 8, 79, "Subsection",ExpressionUUID->"80a83439-75bb-4f25-bfea-a928b1abfc2c"],
+Cell[8235, 235, 740, 19, 28, "Input",ExpressionUUID->"7b5789ac-e00f-4440-9733-faf0f171502c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9012, 259, 374, 7, 79, "Subsection",ExpressionUUID->"9f49ae4b-e41f-4ea7-8aa6-09afd0f3e005"],
+Cell[9389, 268, 959, 23, 67, "Input",ExpressionUUID->"3042fec2-f5c3-4300-9844-34dd7845a5cc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10385, 296, 357, 8, 79, "Subsection",ExpressionUUID->"dc9e5eb6-c473-415b-9f0d-6a65f86f8b3f"],
+Cell[10745, 306, 476, 13, 28, "Input",ExpressionUUID->"9dc90418-06b0-42df-b9b8-92ecc95fcdfd"]
+}, Open  ]],
+Cell[11236, 322, 468, 10, 79, "Subsection",ExpressionUUID->"f4a8871b-9e23-48f1-91bf-84dc90bbd448"],
+Cell[11707, 334, 561, 11, 89, "Subsection",ExpressionUUID->"cec7238e-9f96-4756-895e-e8058714fa79"]
+}, Open  ]]
+}
+]
+*)
+

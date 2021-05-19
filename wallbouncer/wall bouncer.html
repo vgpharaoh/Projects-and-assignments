@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Bouncer</title>
+</head>
+<body>
+<canvas id="myCanvas" width=400 height=400
+style="border:1px solid #c3c3c3;"></canvas>
+
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+//
+
+//
+var x=50;
+var y=50;
+var width=20;
+var height= 20;
+var vx=1;
+var vy=2;
+loop();
+function move()
+{
+	x+=vx;
+	y+=vy;
+	
+	
+		if(x > c.width || x<0)
+			{
+				vx=-vx;
+			}
+		if(y >c.height || y<0)
+		{
+			vy=-vy;
+		}
+	
+	
+}
+
+function draw()
+{
+	ctx.fillStyle="red";
+	ctx.fillRect(x,y,width,height);
+
+}
+
+function loop()
+{	
+	move();
+	ctx.clearRect(0,0,c.width,c.height);
+	draw();
+}
+setInterval(loop,10);
+
+
+
+</script>
+</body>
+</html>
