@@ -1,0 +1,40 @@
+<html>
+	<head>
+			<title></title>
+			<meta content="">
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script>
+				$(function(){
+					$("#visible").click(function() {
+						$('#invisible').toggleClass("show");
+						});
+					});		
+					
+					$(function(){
+					$("#visible2").click(function() {
+						$('#invisible2').toggleClass("show");
+						});
+					});		
+					$(function(){
+					$("#visible3").click(function() {
+						$('#invisible3').toggleClass("show");
+						});
+					});	
+				</script>
+				<style>
+					.hide{display:none;}
+					.show{display:block;}
+				</style>
+			</head>
+			<body>
+			<p> I found a monkey today  who could speak <span id="visible">Japanese</span>! He still flung his <span id="visible2">banana peels</span> at me, and yet he seemed smarter than the average monkey! I wonder if <span id="visible3">biologists</span> would want to take a look at this fellow! Thanks for reading my stuff!</p>
+				<p id="invisible" class = "hide">The language spoken primarily in Japan but also spoken by various weebs!</p>
+				<p id="invisible2" class = "hide">A fruit highly popular among primates!</p>
+				<p id="invisible3" class = "hide">Scientists who study about living organisms</p>
+<p> Where do you wanna go?</p>
+<a href = "index2.html">greetings</a>
+<a href = "dictionary.html">dictionary</a>
+<a href = "photogallery.html">photos</a>	
+<a href = "index.html">home</a>
+			</body>
+		</html>
